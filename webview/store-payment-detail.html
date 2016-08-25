@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title>Fed Up | Collection</title>
+    <title>Fed Up | Payment detail</title>
     <base href="/haoliao/">
     <link href="webview/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="webview/font-awesome/css/font-awesome.min.css">
@@ -78,27 +78,67 @@
 
             <div class="container">
 
-                <h3>Collection options</h3>
-
+                <h3>Payment Method</h3>
                 <hr>
 
-                <div class="desc-title"><strong>Select your collection options (24 hours store only available after 10pm)</strong><br>
-                    <div class="radio">
-                      <label><input type="radio" name="optradio">Pickup at restaurant</label>
+                <!-- <h4>Enter your mobile number</h4>
+                <h5 class="info">An SMS verification code will be sent to this number to complete your sign up.</h5> -->
+
+                <form class="form-horizontal">
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Name</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" placeholder="name" value="Nik Yam">
+                      </div>
                     </div>
-                    <div class="radio">
-                      <label><input type="radio" name="optradio" disabled>Pickup at nearest 24 hours store</label>
-                      <div class="sub-info">7-11, KK Market, LRT and etc.</div>
+                     <div class="form-group">
+                      <label class="col-sm-2 control-label">Credit Card Number</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" placeholder="credit card number"  value="2345 2364 3524 3958">
+                      </div>
                     </div>
-                    <div class="radio">
-                      <label><input type="radio" name="optradio">Delivery - Uber/ Grabcar</label>
-                      <div class="sub-info">Delivery charge based on km/h</div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Expiration Date</label>
+                      <div class="col-sm-2">
+                        <select class="form-control">
+                          <option value="1">Month</option>
+                          <option value="1" selected>1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="1">4</option>
+                          <option value="2">5</option>
+                          <option value="3">6</option>
+                          <option value="1">7</option>
+                          <option value="2">8</option>
+                          <option value="3">9</option>
+                          <option value="1">10</option>
+                          <option value="2">11</option>
+                          <option value="3">12</option>
+                        </select>
+                      </div>
+                       <div class="col-sm-2">
+                        <select class="form-control">
+                          <option value="1">Year</option>
+                          <option value="2">2016</option>
+                          <option value="3" selected>2017</option>
+                          <option value="2">2018</option>
+                          <option value="3">2019</option>
+                          <option value="2">2020</option>
+                          <option value="3">2021</option>
+                        </select>
+                      </div>
                     </div>
-                </div>
-            
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">CVC/CVV2</label>
+                      <div class="col-sm-3">
+                        <input type="password" class="form-control" placeholder="CVC" value="432">
+                      </div>
+                    </div>
+                </form>
                 <div class="row text-center">
-                    <a href="/haoliao/webview/store-payment.html" class="btn btn-primary text-center">Proceed to payment</a>
+                    <a href="/haoliao/webview/store-detail-success.html" class="btn btn-primary" style="margin-top: 20px">Place Order</a>
                 </div>
+
             </div>
         </div>
     </div>
