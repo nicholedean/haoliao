@@ -151,19 +151,27 @@
 <script>
     $(document).ready(function() {
         $.ajax({
-            data: "sql=SELECT r.restaurant_id, restaurant_name, picture, picking_hours, sum_of_portions FROM Restaurant r INNER JOIN Meal m ON m.restaurant_id = r.restaurant_id INNER JOIN (SELECT restaurant_id, sum(`unit_in_stock`) as sum_of_portions FROM Meal GROUP BY restaurant_id) as b ON b.restaurant_id = r.restaurant_id WHERE m.unit_in_stock > 0 GROUP BY r.restaurant_id",
+            data: "sql=SELECT r.restaurant_id, restaurant_name, picture, picking_hours, sum_of_portions, price_level FROM Restaurant r INNER JOIN Meal m ON m.restaurant_id = r.restaurant_id INNER JOIN (SELECT restaurant_id, sum(`unit_in_stock`) as sum_of_portions FROM Meal GROUP BY restaurant_id) as b ON b.restaurant_id = r.restaurant_id WHERE m.unit_in_stock > 0 GROUP BY r.restaurant_id",
             url: 'http://54.179.179.164/webview.php',
             method: 'GET', // or GET
             dataType: 'json',
             success: function (response) {
                 $.each(response, function(index, element) {
+
+                    var price_level = element.price_level.split(",");
                     document.getElementById("result").innerHTML += "<div class='col-md-3'> <div class='card'> <img id='image-"
                             + (index+1)
                             + "'> <div class='card-container'> <h4 id='restaurant-"
                             + (index+1)
                             + "'></h4> <p>Collection time today: <div id='collection_time-"
                             + (index+1)
-                            + "'></div></p> <i class='fa fa-usd' aria-hidden='true' style='color: #FFFF00'></i> <i class='fa fa-usd' aria-hidden='true' style='color: #FFFF00'></i> <i class='fa fa-usd' aria-hidden='true' style='color: #FFFF00;margin-right: 10px;'></i> <a id='store-detail-"
+                            + "'></div></p> <i class='fa fa-usd' aria-hidden='true' style='color: "
+                            + price_level[0]
+                            + "'></i> <i class='fa fa-usd' aria-hidden='true' style='color: "
+                            + price_level[1]
+                            + "'></i> <i class='fa fa-usd' aria-hidden='true' style='color: "
+                            + price_level[2]
+                            + ";margin-right: 10px;'></i> <a id='store-detail-"
                             + (index+1)
                             + "' class='btn btn-primary'><div id='portion-"
                             + (index+1)
