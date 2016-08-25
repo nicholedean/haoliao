@@ -113,6 +113,12 @@
 a.active, a:active, a:focus, a:hover {
     color: #558b2f;
 }
+
+@media (min-width: 768px){
+header .intro-text .intro-heading {
+    text-transform: inherit;
+}
+}
     </style>
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
@@ -151,7 +157,7 @@ a.active, a:active, a:focus, a:hover {
                         <div class="text register-term text-center">We will never post on Facebook without your permission.</div>
                     </div>
                     <div class="col-sm-6 column-right column-border-gray">
-                        <form method="POST" action="#" accept-charset="UTF-8" class="form-horizontal"><input name="_token" type="hidden">
+                        <form method="POST" action="webview/store-detail.html" accept-charset="UTF-8" class="form-horizontal"><input name="_token" type="hidden">
                             <div class="form-group has-feedback">
                                 <div class="col-sm-12">
                                     <input class="form-control" placeholder="Email" required="required" name="email" type="email">
@@ -162,7 +168,8 @@ a.active, a:active, a:focus, a:hover {
                                     <input class="form-control" placeholder="Password" required="required" name="password" type="password" value="">
                                 </div>
                             </div>
-                            <input class="btn btn-primary btn-block" type="submit" value="Login">
+                            <!-- <input class="btn btn-primary btn-block" type="submit" value="Login"> -->
+                            <a href="webview/store.html" class="btn btn-primary" style="width: 100%;">Login</a>
                         </form>
                     
                         <div class="text register-term text-left">
@@ -200,10 +207,10 @@ a.active, a:active, a:focus, a:hover {
                         <a href="javascript:void(0)"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="javascript:void(0)">Story</a>
+                        <a class="page-scroll" href="javascript:void(0)">Our Story</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="javascript:void(0)">How it works</a>
+                        <a class="page-scroll" href="javascript:void(0)">How Fed up works</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="javascript:void(0)">About us</a>
@@ -227,10 +234,10 @@ a.active, a:active, a:focus, a:hover {
     <header>
         <div class="container">
             <div class="intro-text">
-                <div class="intro-lead-in">Save our planet, don't waste food</div>
-                <div class="intro-heading">Enjoy delicious takeaway food from local restaurants, cafes and bakeries with lower price.</div>
+                <div class="intro-lead-in">Eat well for less. Reduce food waste.</div>
+                <div class="intro-heading">Enjoy great food from local restaurants at the lowest prices.</div>
 
-                <a href="/haoliao/webview/store.html" class="btn btn-primary btn-lg">Get Started</a>
+                <a data-toggle="modal" data-target="#loginModal" class="btn btn-primary btn-lg">Get Started</a>
 
             </div>
         </div>
@@ -240,13 +247,14 @@ a.active, a:active, a:focus, a:hover {
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2><strong>STORY</strong></h2>
+                    <h2><strong>OUR STORY</strong></h2>
                 </div>
             </div>
             <div class="row text-left">
                 <div class="col-md-6">
-                    <p>To better understand community knowledge, attitudes and behaviours about household food waste, 1,200  NSW households were surveyed as part of the  ‘Food Waste Avoidance Benchmark Study’. <br>
-                    As a result of this study, estimate that the average NSW household throws out $1,036 of food every year.</p>
+                    <p style="font-size: 18px">Restaurants waste a massive amount of food every day. In Malsysia alone, researches estimate retaurants waste up to 15,000 tonnes of food daily, with 3,000 tonnes still fit to consume. This amount is enough to feed two million hungry people. <br><br>
+                    Our application, <strong>Fed Up</strong>, aims to change this. We want to provide a way to sell this food back to the public, on the cheap helping to reduce food waste. 
+                   </p>
                 </div>
                 <div class="col-md-6">
                     <img src="webview/img/wasted-food-graph.jpg" alt="graph" style="width: 100%;">
@@ -272,19 +280,19 @@ a.active, a:active, a:focus, a:hover {
                 <div class="col-sm-4">
                     <div class="how-work">
                         <h3><i class="fa fa-search" aria-hidden="true"></i> Discover</h3>
-                        <p>Search through our restaurant to find the food you want.</p>
+                        <p>Browse to find the food you like from local restaurants near you.</p>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="how-work">
                         <h3><i class="fa fa-shopping-cart" aria-hidden="true"></i> Order</h3>
-                        <p>Collect your food at your selected restaurant</p>
+                        <p>Order online and select your preferred method of collection.</p>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="how-work">
                         <h3><i class="fa fa-cutlery" aria-hidden="true"></i> Collect & enjoy</h3>
-                        <p>Show your order confirmation, grab your food and enjoy!</p>
+                        <p>Grab your food at the pick-up location during the time slot you selected and munch away.</p>
                     </div>
                 </div>
             </div>
@@ -306,7 +314,7 @@ a.active, a:active, a:focus, a:hover {
                     <ul>
                         <li>We were all 'fed up' with food wastage</li>
                         <li>The hungry folks must be 'fed up'</li>
-                        <li>The hungry folks are so 'fed up' with hunger taht they need to be fed up!</li>
+                        <li>The hungry folks are so 'fed up' with hunger that they need to be fed up!</li>
                     </ul>
                 </div>
                 <div class="col-sm-3 text-right">
@@ -330,8 +338,8 @@ a.active, a:active, a:focus, a:hover {
      <section id="app">
         <div class="container text-center">
             <h3 style="margin-bottom: 20px;">Download our free app and help us <br><strong>Reduce Food Waste</strong></h3>
-            <img src="webview/img/apple.png" alt="Apple" width="130" height="43" style="cursor: pointer">
-            <img src="webview/img/google.png" alt="Google" width="130" height="43" style="cursor: pointer">
+            <img src="webview/img/apple.png" alt="Apple" width="130" height="43" style="cursor: pointer; margin: 5px;">
+            <img src="webview/img/google.png" alt="Google" width="130" height="43" style="cursor: pointer; margin: 5px;">
         </div>
     </section>
 
@@ -359,9 +367,5 @@ a.active, a:active, a:focus, a:hover {
         webViewBase: location.origin + location.pathname + 'templates/'
     };
     console.log(defaultParam);
-
-    var test = $http.get("http://54.179.179.164/hackathon.php?callback=angular.callbacks._0&sql=SELECT restaurant_name, picture, picking_hours, sum_of_portions FROM Restaurant r INNER JOIN Meal m ON m.restaurant_id = r.restaurant_id INNER JOIN (SELECT restaurant_id, sum(`unit_in_stock`) as sum_of_portions FROM Meal GROUP BY restaurant_id) as b ON b.restaurant_id = r.restaurant_id WHERE m.unit_in_stock > 0");
-
-console.log(test);
 </script>
 </html>

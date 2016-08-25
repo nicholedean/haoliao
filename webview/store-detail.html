@@ -83,7 +83,7 @@
 
                 <div class="row">
                     <div class="col-sm-2"><img id="logo_url" width="200" class=></div>
-                    <div class="col-sm-6"><h2 class="store-title"><button class="btn btn-default"><i class="fa fa-star" aria-hidden="true"></i></button></h2></div>
+                    <div class="col-sm-10"><h2 class="store-title"><button id="star" class="btn btn-default"><i class="fa fa-star" aria-hidden="true"></i></button></h2></div>
                 </div>
 
                 <hr>
@@ -93,60 +93,60 @@
                 </div>
                 <div class="desc-title"><strong>Description</strong>
                     <div class="desc">
-                        <div><strong>Addres:</strong></div>
+                        <div><strong>Address:</strong></div>
                         <span id="address"></span><br>
                         <!--<a href="javascript:void(0)">Link to Google Map</a>-->
                         <div><strong>Phone:</strong></div>
                         <span id="contact"></span>
                     </div>
                 </div>
+                <br>
+                <div class="desc-title"><strong>Foods Available:</strong><br>
+                <div class="table-responsive">
+                   <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Original Price</th>
+                                <th>Discount Price</th>
+                                <th>Quantity</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img id="picture_url-1" class="img-circle" style="width: 100px;"></td>
+                                <td id="meal_name-1"></td>
+                                <td><span id="original_price-1" style="text-decoration: line-through;"></span></td>
+                                <td style="color:red" id="unit_price-1"></td>
+                                <td id="unit_in_stock-1"></td>
+                                 <th><input type="text" value="0" style="width:60px"></th>
+                            </tr>
+                            <tr>
+                                <td><img id="picture_url-2" class="img-circle" style="width: 100px;"></td>
+                                <td id="meal_name-2"></td>
+                                <td><span id="original_price-2" style="text-decoration: line-through;"></span></td>
+                                <td style="color:red" id="unit_price-2"></td>
+                                <td id="unit_in_stock-2"></td>
+                                <th><input type="text" value="0" style="width:60px"></th>
+                            </tr>
+                            <tr>
+                                <td><img id="picture_url-3" class="img-circle" style="width: 100px;"></td>
+                                <td id="meal_name-3"></td>
+                                <td><span id="original_price-3" style="text-decoration: line-through;"></span></td>
+                                <td style="color:red" id="unit_price-3"></td>
+                                <td id="unit_in_stock-3"></td>
+                                <th><input type="text" value="0" style="width:60px"></th>
+                            </tr>
 
-                <div class="desc-title"><strong>Top 3 categories:</strong><br>
-                    <div class="row">
-                        <div class="col-sm-3 text-right">Main Course</div>
-                        <div class="col-sm-2">
-                            <select class="form-control">
-                                <option value="0">none</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3 text-right">Desserts</div>
-                        <div class="col-sm-2">
-                            <select class="form-control">
-                                <option value="0">none</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3 text-right">Noodle</div>
-                        <div class="col-sm-2">
-                            <select class="form-control">
-                                <option value="0">none</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="3">4</option>
-                            </select>
-                        </div>
-                    </div>
-                     <div class="row">
-                        <div class="col-sm-3 text-right">Others</div>
-                        <div class="col-sm-2">
-                            <select class="form-control">
-                                <option value="0">none</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
-                        </div>
+
+                            
+                        </tbody>
+                    </table>
                     </div>
                 </div>
+
                 <div class="row text-center">
                     <a href="/haoliao/webview/store-detail-collect.html" class="btn btn-primary text-center">Proceed</a>
                 </div>
@@ -169,11 +169,22 @@
 
 </body>
 <script>
+
     console.log(location.origin + location.pathname);
     var defaultParam = {
         webViewBase: location.origin + location.pathname + 'templates/'
     };
     console.log(defaultParam);
+    $(function(){ 
+        $('#star').click(function(){
+            
+            if($('#star').hasClass('starred')) {
+                $(this).removeClass('starred');
+            }else {
+                $(this).addClass('starred');
+            }
+        });
+    });
 </script>
 
 <!-- Call haoliao API -->
@@ -190,13 +201,17 @@
 
     $(document).ready(function() {
         $.ajax({
-            data: "sql=SELECT meal_id, meal_name, description, unit_price, picture_url, unit_in_stock FROM Meal WHERE restaurant_id = " + getParameterByName("restaurant_id"),
+            data: "sql=SELECT meal_id, meal_name, description, unit_price, picture_url, unit_in_stock, original_price FROM Meal WHERE restaurant_id = " + getParameterByName("restaurant_id"),
             url: 'http://54.179.179.164/webview.php',
             method: 'GET', // or GET
             dataType: 'json',
             success: function (response) {
                 $.each(response, function(index, element) {
-//                    $('#meal_description-' + (index+1)).attr('src', element.picture);
+                    $('#meal_name-' + (index+1)).text(element.meal_name);
+                    $('#original_price-' + (index+1)).text('RM ' + element.original_price);
+                    $('#unit_price-' + (index+1)).text('RM ' + element.unit_price);
+                    $('#unit_in_stock-' + (index+1)).text(element.unit_in_stock);
+                    $('#picture_url-' + (index+1)).attr('src', element.picture_url);
                 });
             }
         });
