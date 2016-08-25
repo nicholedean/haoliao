@@ -4,11 +4,73 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>Fed Up | Search</title>
-    <base href="/haoliao/">
+    <base href="/hackathon/hackathon/www/">
     <link href="webview/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="webview/font-awesome/css/font-awesome.min.css">
     <!-- <link href="webview/lib/ionic/css/ionic.css" rel="stylesheet"> -->
     <link href="webview/css/style.css" rel="stylesheet">
+    <link href="webview/css/agency.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 0;
+        }
+        @media (min-width: 768px){
+            header .intro-text .intro-heading {
+                font-size: 25px;
+                line-height: 1.1;
+            }
+        }
+        .navbar-custom .navbar-nav>.active>a {
+            border-radius: 0;
+            color: #558b2f;
+            background-color: transparent;
+        }
+        .navbar-custom .nav li a:focus, .navbar-custom .nav li a:hover {
+            color: #558b2f;
+            outline: 0;
+        }
+        .section-green {
+            background-color: #558b2f;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-size: 22px;
+        }
+        .section-work .fa{
+            color: #558b2f;
+        }
+        .section-work .how-work {
+            background-color: #ffffff;
+            padding: 5px 20px;
+        }
+        .section-work .how-work p {
+            padding: 20px 10px;
+            font-size: 16px;
+            text-align: center;
+            border-top: 1px solid #558b2f;
+        }
+        .section-work .how-work h3 {
+            text-transform: inherit;
+        }
+        .section-white {
+            background-color: #ffffff;
+        }
+        .navbar-custom .navbar-toggle {
+            background-color: #558b2f;
+            border-color: #558b2f;
+        }
+        .navbar-custom .navbar-toggle:hover {
+            background-color: #558b2f;
+            border-color: #558b2f;
+        }
+        .navbar-custom .navbar-toggle:visit{
+            background-color: #558b2f;
+            border-color: #558b2f;
+        }
+        .navbar-custom .navbar-toggle:focus, .navbar-custom .navbar-toggle:hover {
+        background-color: #558b2f;
+    }
+    </style>
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -32,139 +94,151 @@
 </head>
 
 <body ng-app="starter">
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+     <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
+            <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="/haoliao/webview/index.html"><img src="webview/img/fedup-logo.png" alt="FedUp logo" width="115"></a>
+                <a class="navbar-brand page-scroll" href="#page-top"><img src="webview/img/fedup-logo.png" alt="FedUp logo" width="115"></a>
             </div>
+
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="javascript:void(0)">Profile</a>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)">Log out</a>
+                        <a class="page-scroll" href="#story">Story</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#howitworks">How it works</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#aboutus">About us</a>
+                    </li>
+                    <li style="border-left: 1px solid #fff">
+                        <a class="page-scroll" href="#Login">Login</a>
+                    </li>
+                    <li style="border: 1px solid #fff;">
+                        <a class="page-scroll" href="#Signup">Sign up</a>
                     </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container -->
+        <!-- /.container-fluid -->
     </nav>
 
-    <div class="menu-bar text-center">
-        <ul class="list-inline">
-            <li class="active"><a href="javascript:void(0)"><i class="fa fa-search" aria-hidden="true"></i> Search for restaurant</a></li>
-            <li><a href="/haoliao/webview/feature-google-map.html"><i class="fa fa-map-marker" aria-hidden="true"></i> Map</a></li>
-            <li><a href="/haoliao/webview/feature-favourite.html"><i class="fa fa-star" aria-hidden="true"></i> My favourite</a></li>
-            <li><a href="/haoliao/webview/feature-history.html"><i class="fa fa-history" aria-hidden="true"></i> History</a></li>
-        </ul>
-    </div>
-
-    <!-- Page Content -->
-    <div class="container" ng-controller="FoodCtrl">
-   
-        <!-- Page Header -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h3 class="page-header">Search for restaurant</h3>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in">Save our planet, don't waste food</div>
+                <div class="intro-heading">Enjoy delicious takeaway food from local restaurants, cafes and bakeries with lower price.</div>
+                <a href="#" class="btn btn-primary btn-lg">Get Started</a>
             </div>
         </div>
-        <!-- /.row -->
+    </header>
 
-        <div class="row text-center search-filter">
-            <div class="col-sm-1 col-sm-offset-2"><label class="col-sm-2 control-label">Search</label></div>
-            <div class="col-sm-3"><input type="text" class="form-control" placeholder="keyword"></div>
-            <div class="col-sm-1"><label class="col-sm-2 control-label">Filter</label></div>
-            <div class="col-sm-3">
-                <select class="form-control">
-                    <option value="1">Nearest</option>
-                    <option value="2">Most popular</option>
-                    <option value="3">Top quantity</option>
-                </select>
+    <section id="story">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2><strong>STORY</strong></h2>
+                </div>
+            </div>
+            <div class="row text-left">
+                <div class="col-md-6">
+                    <p>To better understand community knowledge, attitudes and behaviours about household food waste, 1,200  NSW households were surveyed as part of the  ‘Food Waste Avoidance Benchmark Study’. <br>
+                    As a result of this study, estimate that the average NSW household throws out $1,036 of food every year.</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="webview/img/wasted-food-graph.jpg" alt="graph">
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="row card-parent">
-            <div class="col-md-3">
-                <div class="card">
-                    <img src="webview/img/store/list-sr.jpg" alt="Secret Recipe">
-                    <div class="card-container">
-                        <h4>Secret Recipe</h4>
-                        <p>Collection time today: <br> 8pm - 9pm</p>
-                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary">Portions: 10</a>
-                    </div>
+    <section class="section-green">
+        <div class="container">
+            Nearly 40% of food is wasted globally... most of it ending up in landfills.
+        </div>
+    </section>
+
+    <section id="howitworks" class="section-work">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2><strong>HOW FED UP WORKS</strong></h2>
                 </div>
             </div>
-            <div class="col-md-3"> 
-                <div class="card">
-                    <img src="webview/img/store/list-br.jpg" alt="BR">
-                    <div class="card-container">
-                        <h4>Baskit Robbun's</h4>
-                        <p>Collection time today: <br> 1pm - 9pm</p>
-                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary">Portions: 20</a>
+            <div class="row text-left">
+                <div class="col-sm-4">
+                    <div class="how-work">
+                        <h3><i class="fa fa-search" aria-hidden="true"></i> Discover</h3>
+                        <p>Search through our restaurant to find the food you want.</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <img src="webview/img/store/list-sp.jpg" alt="Soppong">
-                    <div class="card-container">
-                        <h4>Sopoong</h4>
-                        <p>Collection time today: <br> 1pm - 2pm</p>
-                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary">Portions: 2</a>
+                <div class="col-sm-4">
+                    <div class="how-work">
+                        <h3><i class="fa fa-shopping-cart" aria-hidden="true"></i> Order</h3>
+                        <p>Collect your food at your selected restaurant</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <img src="webview/img/store/list-sk.jpg" alt="Secret Recipe">
-                    <div class="card-container">
-                        <h4>Sushi King</h4>
-                        <p>Collection time today: <br> 1pm - 3pm</p>
-                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary">Portions: 2</a>
-                    </div>
-                </div>
-            </div>
-              <div class="col-md-3">
-                <div class="card">
-                    <img src="webview/img/store/list-tp.jpg" alt="Secret Recipe">
-                    <div class="card-container">
-                        <h4>Secret Recipe</h4>
-                        <p>Collection time today: <br> 12am - 1am</p>
-                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary">Portions: 3</a>
+                <div class="col-sm-4">
+                    <div class="how-work">
+                        <h3><i class="fa fa-cutlery" aria-hidden="true"></i> Collect & enjoy</h3>
+                        <p>Show your order confirmation, grab your food and enjoy!</p>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Pagination -->
-        <div class="row text-center">
-            <div class="col-lg-12">
-                <ul class="pagination">
-                    <li>
-                        <a href="javascript:void(0)">&laquo;</a>
-                    </li>
-                    <li class="active">
-                        <a href="javascript:void(0)">1</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">&raquo;</a>
-                    </li>
-                </ul>
+    <section id="aboutus" class="section-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 text-right">
+                    <h2><strong>ABOUT US</strong></h2>
+                </div>
+                <div class="col-sm-9" style="padding: 20px;">
+                    We are a group of passionate food lovers and developers working to lead subtainable solutions in the aim to help protect the planet. <br>
+                    This Hackathon, we've come together to share our idea. <br>
+                    Why Fed Up? <br>
+                    <ul>
+                        <li>We were all 'fed up' with food wastage</li>
+                        <li>The hungry folks must be 'fed up'</li>
+                        <li>The hungry folks are so 'fed up' with hunger taht they need to be fed up!</li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 text-right">
+                    <h3><strong>Our Team</strong></h3>
+                </div>
+                <div class="col-sm-9" style="padding: 25px;">
+                    <ul class="list-inline">
+                        <li>Kar Mun</li>
+                        <li>Nik Yam</li>
+                        <li>Khang Loong</li>
+                        <li>Wei Siong</li>
+                        <li>Kian Leong</li>
+                        <li>Bao Yee</li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <!-- /.row -->
-    </div>
+    </section>
+
+     <section id="app">
+        <div class="container text-center">
+            <h3 style="margin-bottom: 20px;">Download our free app and help us <br><strong>Reduce Food Waste</strong></h3>
+            <img src="webview/img/apple.png" alt="Apple" width="130" height="43">
+            <img src="webview/img/google.png" alt="Google" width="130" height="43">
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -183,17 +257,17 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="webview/js/bootstrap.min.js"></script>
+        <!-- Theme JavaScript -->
+    <script src="webview/js/agency.min.js"></script>
 <script>
     console.log(location.origin + location.pathname);
     var defaultParam = {
         webViewBase: location.origin + location.pathname + 'templates/'
     };
     console.log(defaultParam);
+
+    var test = $http.get("http://54.179.179.164/hackathon.php?callback=angular.callbacks._0&sql=SELECT restaurant_name, picture, picking_hours, sum_of_portions FROM Restaurant r INNER JOIN Meal m ON m.restaurant_id = r.restaurant_id INNER JOIN (SELECT restaurant_id, sum(`unit_in_stock`) as sum_of_portions FROM Meal GROUP BY restaurant_id) as b ON b.restaurant_id = r.restaurant_id WHERE m.unit_in_stock > 0");
+
+console.log(test);
 </script>
-
-<!-- Call haoliao API -->
-<script>
-
-</script>
-
 </html>
