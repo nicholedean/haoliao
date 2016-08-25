@@ -29,6 +29,10 @@
 
     <!-- My js -->
     <script src="webview/js/style.js"></script>
+
+    <!-- jQuery js -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
 </head>
 
 <body ng-app="starter">
@@ -97,51 +101,71 @@
         <div class="row card-parent">
             <div class="col-md-3">
                 <div class="card">
-                    <img src="webview/img/store/list-sr.jpg" alt="Secret Recipe">
+                    <img id="image-1">
                     <div class="card-container">
-                        <h4>Secret Recipe</h4>
-                        <p>Collection time today: <br> 8pm - 9pm</p>
-                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary">Portions: 10</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3"> 
-                <div class="card">
-                    <img src="webview/img/store/list-br.jpg" alt="BR">
-                    <div class="card-container">
-                        <h4>Baskit Robbun's</h4>
-                        <p>Collection time today: <br> 1pm - 9pm</p>
-                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary">Portions: 20</a>
+                        <h4 id="restaurant-1"></h4>
+                        <p>Collection time today: <div id="collection_time-1"></div></p>
+                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary"><div id="portion-1"></div></a>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card">
-                    <img src="webview/img/store/list-sp.jpg" alt="Soppong">
+                    <img id="image-2">
                     <div class="card-container">
-                        <h4>Sopoong</h4>
-                        <p>Collection time today: <br> 1pm - 2pm</p>
-                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary">Portions: 2</a>
+                        <h4 id="restaurant-2"></h4>
+                        <p>Collection time today: <div id="collection_time-2"></div></p>
+                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary"><div id="portion-2"></div></a>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card">
-                    <img src="webview/img/store/list-sk.jpg" alt="Secret Recipe">
+                    <img id="image-3">
                     <div class="card-container">
-                        <h4>Sushi King</h4>
-                        <p>Collection time today: <br> 1pm - 3pm</p>
-                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary">Portions: 2</a>
+                        <h4 id="restaurant-3"></h4>
+                        <p>Collection time today: <div id="collection_time-3"></div></p>
+                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary"><div id="portion-3"></div></a>
                     </div>
                 </div>
             </div>
-              <div class="col-md-3">
+            <div class="col-md-3">
                 <div class="card">
-                    <img src="webview/img/store/list-tp.jpg" alt="Secret Recipe">
+                    <img id="image-4">
                     <div class="card-container">
-                        <h4>Secret Recipe</h4>
-                        <p>Collection time today: <br> 12am - 1am</p>
-                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary">Portions: 3</a>
+                        <h4 id="restaurant-4"></h4>
+                        <p>Collection time today: <div id="collection_time-4"></div></p>
+                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary"><div id="portion-4"></div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img id="image-5">
+                    <div class="card-container">
+                        <h4 id="restaurant-5"></h4>
+                        <p>Collection time today: <div id="collection_time-5"></div></p>
+                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary"><div id="portion-5"></div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img id="image-6">
+                    <div class="card-container">
+                        <h4 id="restaurant-6"></h4>
+                        <p>Collection time today: <div id="collection_time-6"></div></p>
+                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary"><div id="portion-6"></div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img id="image-7">
+                    <div class="card-container">
+                        <h4 id="restaurant-7"></h4>
+                        <p>Collection time today: <div id="collection_time-7"></div></p>
+                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary"><div id="portion-7"></div></a>
                     </div>
                 </div>
             </div>
@@ -193,7 +217,22 @@
 
 <!-- Call haoliao API -->
 <script>
-
+    $(document).ready(function() {
+        $.ajax({
+            data: "sql=SELECT restaurant_name, picture, picking_hours, sum_of_portions FROM Restaurant r INNER JOIN Meal m ON m.restaurant_id = r.restaurant_id INNER JOIN (SELECT restaurant_id, sum(`unit_in_stock`) as sum_of_portions FROM Meal GROUP BY restaurant_id) as b ON b.restaurant_id = r.restaurant_id WHERE m.unit_in_stock > 0 GROUP BY r.restaurant_id",
+            url: 'http://54.179.179.164/webview.php',
+            method: 'GET', // or GET
+            dataType: 'json',
+            success: function (response) {
+                $.each(response, function(index, element) {
+                    $('#image-' + (index+1)).attr('src', element.picture);
+                    $('#restaurant-' + (index+1)).text(element.restaurant_name);
+                    $('#collection_time-' + (index+1)).text(element.picking_hours);
+                    $('#portion-' + (index+1)).text('Portions: ' + element.sum_of_portions);
+                });
+            }
+        });
+    })
 </script>
 
 </html>
