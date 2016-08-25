@@ -45,7 +45,7 @@
         }
         .section-work .how-work p {
             padding: 20px 10px;
-            font-size: 16px;
+            font-size: 18px;
             text-align: center;
             border-top: 1px solid #558b2f;
         }
@@ -68,8 +68,51 @@
             border-color: #558b2f;
         }
         .navbar-custom .navbar-toggle:focus, .navbar-custom .navbar-toggle:hover {
-        background-color: #558b2f;
-    }
+            background-color: #558b2f;
+        }
+        @media (max-width : 767px) {
+            section {
+                padding: 50px 0;
+            }
+        }
+        .my-team {
+            padding: 25px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .my-team {
+                padding: 10px 25px;
+                text-align: center;
+            }
+        }
+
+        @media (min-width: 768px){
+.column-left, .column-right {
+    padding-top: 0;
+    padding-bottom: 0;
+}}
+.column-left, .column-right {
+    padding-bottom: 20px;
+}
+.column-left, .column-right {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+@media (min-width: 768px){
+.column-border-gray {
+    border-top: 0;
+    border-left: 1px solid #999;
+}}
+.register-term {
+    padding: 10px;
+}
+
+.text-primary, a {
+    color: #558b2f;
+}
+a.active, a:active, a:focus, a:hover {
+    color: #558b2f;
+}
     </style>
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
@@ -94,7 +137,52 @@
 </head>
 
 <body ng-app="starter">
-     <!-- Navigation -->
+
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h3><strong>Login</strong></h3>
+            <h5>Remind yourself, don't waste food.</h5>
+                <div class="row">   
+                    <div class="col-sm-6 column-left">
+                        <a href="#"><img src="https://d3challenge.com/images/login-with-facebook.png" alt="facebook signup" width="100%"></a> 
+                        <div class="text register-term text-center">We will never post on Facebook without your permission.</div>
+                    </div>
+                    <div class="col-sm-6 column-right column-border-gray">
+                        <form method="POST" action="#" accept-charset="UTF-8" class="form-horizontal"><input name="_token" type="hidden">
+                            <div class="form-group has-feedback">
+                                <div class="col-sm-12">
+                                    <input class="form-control" placeholder="Email" required="required" name="email" type="email">
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <div class="col-sm-12">
+                                    <input class="form-control" placeholder="Password" required="required" name="password" type="password" value="">
+                                </div>
+                            </div>
+                            <input class="btn btn-primary btn-block" type="submit" value="Login">
+                        </form>
+                    
+                        <div class="text register-term text-left">
+                            <a href="#">Forgot password?</a>
+                        </div>
+                    </div>
+                </div>
+          </div>
+          <div class="modal-footer text-center" style="background-color: #558b2f; text-align: center;border-radius: 0 0 4px 4px; color: #000">
+            <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button> -->
+            <span>Don't have an account?</span><br>
+            <strong><a href="#" style="color: #000000;">Sign up now</a></strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -121,7 +209,9 @@
                         <a class="page-scroll" href="javascript:void(0)">About us</a>
                     </li>
                     <li style="border-left: 1px solid #fff">
-                        <a class="page-scroll" href="javascript:void(0)">Login</a>
+
+                        <a class="page-scroll" data-toggle="modal" data-target="#loginModal" style="cursor: pointer">Login</a>
+
                     </li>
                     <li style="border: 1px solid #fff;">
                         <a class="page-scroll" href="javascript:void(0)">Sign up</a>
@@ -139,7 +229,9 @@
             <div class="intro-text">
                 <div class="intro-lead-in">Save our planet, don't waste food</div>
                 <div class="intro-heading">Enjoy delicious takeaway food from local restaurants, cafes and bakeries with lower price.</div>
+
                 <a href="/haoliao/webview/store.html" class="btn btn-primary btn-lg">Get Started</a>
+
             </div>
         </div>
     </header>
@@ -157,7 +249,7 @@
                     As a result of this study, estimate that the average NSW household throws out $1,036 of food every year.</p>
                 </div>
                 <div class="col-md-6">
-                    <img src="webview/img/wasted-food-graph.jpg" alt="graph">
+                    <img src="webview/img/wasted-food-graph.jpg" alt="graph" style="width: 100%;">
                 </div>
             </div>
         </div>
@@ -202,13 +294,15 @@
     <section id="aboutus" class="section-white">
         <div class="container">
             <div class="row">
-                <div class="col-sm-3 text-right">
-                    <h2><strong>ABOUT US</strong></h2>
+                <div class="col-sm-3">
+                    <h2 class="hidden-xs text-right"><strong>ABOUT US</strong></h2>
+
+                    <h2 class="visible-xs text-left"><strong>ABOUT US</strong></h2>
                 </div>
-                <div class="col-sm-9" style="padding: 20px;">
+                <div class="col-sm-9" style="padding: 20px; font-size: 18px">
                     We are a group of passionate food lovers and developers working to lead subtainable solutions in the aim to help protect the planet. <br>
                     This Hackathon, we've come together to share our idea. <br>
-                    Why Fed Up? <br>
+                    <div style="margin: 5px 0;"><strong>Why Fed Up?</strong></div>
                     <ul>
                         <li>We were all 'fed up' with food wastage</li>
                         <li>The hungry folks must be 'fed up'</li>
@@ -216,9 +310,10 @@
                     </ul>
                 </div>
                 <div class="col-sm-3 text-right">
-                    <h3><strong>Our Team</strong></h3>
+                    <h3 class="hidden-xs text-right"><strong>Our Team</strong></h3>
+                    <h3 class="visible-xs text-left"><strong>Our Team</strong></h3>
                 </div>
-                <div class="col-sm-9" style="padding: 25px;">
+                <div class="col-sm-9 my-team" style="font-size: 18px;">
                     <ul class="list-inline">
                         <li>Kar Mun</li>
                         <li>Nik Yam</li>
@@ -235,8 +330,8 @@
      <section id="app">
         <div class="container text-center">
             <h3 style="margin-bottom: 20px;">Download our free app and help us <br><strong>Reduce Food Waste</strong></h3>
-            <img src="webview/img/apple.png" alt="Apple" width="130" height="43">
-            <img src="webview/img/google.png" alt="Google" width="130" height="43">
+            <img src="webview/img/apple.png" alt="Apple" width="130" height="43" style="cursor: pointer">
+            <img src="webview/img/google.png" alt="Google" width="130" height="43" style="cursor: pointer">
         </div>
     </section>
 
@@ -254,10 +349,9 @@
 </body>
     <!-- jQuery -->
     <script src="webview/js/jquery.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="webview/js/bootstrap.min.js"></script>
-        <!-- Theme JavaScript -->
+    <!-- Theme JavaScript -->
     <script src="webview/js/agency.min.js"></script>
 <script>
     console.log(location.origin + location.pathname);
