@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>Fed Up | Store detail</title>
-    <base href="/haoliao/">
+    <base href="/haoliao">
     <link href="webview/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="webview/font-awesome/css/font-awesome.min.css">
     <!-- <link href="lib/ionic/css/ionic.css" rel="stylesheet"> -->
@@ -29,6 +29,9 @@
 
     <!-- My js -->
     <script src="webview/js/style.js"></script>
+
+    <!-- jQuery js -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 </head>
 
 <body ng-app="starter">
@@ -79,28 +82,26 @@
             <div class="container">
 
                 <div class="row">
-                    <div class="col-sm-2"><img src="webview/img/store/br-logo.png" alt="BR logo" width="200" class=></div>
-                    <div class="col-sm-10"><h2 class="store-title">Baskit Robbin's <button id="star" class="btn btn-default"><i class="fa fa-star" aria-hidden="true"></i></button></h2></div>
+                    <div class="col-sm-2"><img id="logo_url" width="200" class=></div>
+                    <div class="col-sm-10"><h2 class="store-title"><button id="star" class="btn btn-default"><i class="fa fa-star" aria-hidden="true"></i></button></h2></div>
                 </div>
 
                 <hr>
 
                 <div class="desc-title"><strong>Collection time today:</strong><br>
-                <span>8pm to 9pm</span>
+                <span id="picking_hours"></span>
                 </div>
                 <div class="desc-title"><strong>Description</strong>
                     <div class="desc">
-                        <div><strong>Addres:</strong></div>
-                        <span>Lot G-03, Ground Floor, Menara The Weld, No 76, Jalan Raja Chulan, 50200 Kuala Lumpur, Malaysia </span><br>
-                        <a href="javascript:void(0)">Link to Google Map</a>
+                        <div><strong>Address:</strong></div>
+                        <span id="address"></span><br>
+                        <!--<a href="javascript:void(0)">Link to Google Map</a>-->
                         <div><strong>Phone:</strong></div>
-                        <span>60 3-2162 6880</span>
-                        <div><strong>Your Price</strong></div>
-                        <span>MYR 1 - MYR 10</span>
+                        <span id="contact"></span>
                     </div>
                 </div>
-
-                <div class="desc-title"><strong>Top 3 foods:</strong><br>
+                <br>
+                <div class="desc-title"><strong>Foods Available:</strong><br>
                 <div class="table-responsive">
                    <table class="table table-hover">
                         <thead>
@@ -115,37 +116,30 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><img src="http://4.bp.blogspot.com/-Ni78iq5xpKc/TfzQP7UgD-I/AAAAAAAAAp4/38H7MZnHCWo/s1600/SDC12825.JPG" alt="Cheese Tart" class="img-circle" style="width: 100px;"></td>
-                                <td>Cheese Tart</td>
-                                <td><span style="text-decoration: line-through">RM 5</span></td>
-                                <td>RM 2</td>
-                                <td>3</td>
+                                <td><img id="picture_url-1" class="img-circle" style="width: 100px;"></td>
+                                <td id="meal_name-1"></td>
+                                <td><span id="original_price-1" style="text-decoration: line-through;"></span></td>
+                                <td style="color:red" id="unit_price-1"></td>
+                                <td id="unit_in_stock-1"></td>
                                  <th><input type="text" value="0" style="width:60px"></th>
                             </tr>
                             <tr>
-                                <td><img src="http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/9/2/0/garlmash_190.jpg.rend.sni12col.landscape.jpeg" alt="Mash Potato" class="img-circle" style="width: 100px;"></td>
-                                <td>Mash Potato (large)</td>
-                                <td><span style="text-decoration: line-through">RM 6</span></td>
-                                <td>RM 3</td>
-                                <td>2</td>
-                                 <th><input type="text" value="0" style="width:60px"></th>
-                            </tr>
-                            <tr>
-                                <td><img src="http://www.azumafoods.com/products/product_images/Reito_Tamago_Yaki_3_13_109_1.jpg" alt="Sushi" class="img-circle" style="width: 100px;"></td>
-                                <td>Sushi Tamago</td>
-                                <td><span style="text-decoration: line-through">RM 4</span></td>
-                                <td>RM 2</td>
-                                <td>1</td>
+                                <td><img id="picture_url-2" class="img-circle" style="width: 100px;"></td>
+                                <td id="meal_name-2"></td>
+                                <td><span id="original_price-2" style="text-decoration: line-through;"></span></td>
+                                <td style="color:red" id="unit_price-2"></td>
+                                <td id="unit_in_stock-2"></td>
                                 <th><input type="text" value="0" style="width:60px"></th>
                             </tr>
                             <tr>
-                                <td><img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/GHS-pictogram-unknown.svg" alt="Other" class="img-circle" style="width: 100px;"></td>
-                                <td>Others</td>
-                                <td><span style="text-decoration: line-through">RM 8 - 13</span></td>
-                                <td>RM 2 - 5</td>
-                                <td>5</td>
+                                <td><img id="picture_url-3" class="img-circle" style="width: 100px;"></td>
+                                <td id="meal_name-3"></td>
+                                <td><span id="original_price-3" style="text-decoration: line-through;"></span></td>
+                                <td style="color:red" id="unit_price-3"></td>
+                                <td id="unit_in_stock-3"></td>
                                 <th><input type="text" value="0" style="width:60px"></th>
                             </tr>
+
 
                             
                         </tbody>
@@ -192,4 +186,52 @@
         });
     });
 </script>
+
+<!-- Call haoliao API -->
+<script>
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    $(document).ready(function() {
+        $.ajax({
+            data: "sql=SELECT meal_id, meal_name, description, unit_price, picture_url, unit_in_stock, original_price FROM Meal WHERE restaurant_id = " + getParameterByName("restaurant_id"),
+            url: 'http://54.179.179.164/webview.php',
+            method: 'GET', // or GET
+            dataType: 'json',
+            success: function (response) {
+                $.each(response, function(index, element) {
+                    $('#meal_name-' + (index+1)).text(element.meal_name);
+                    $('#original_price-' + (index+1)).text('RM ' + element.original_price);
+                    $('#unit_price-' + (index+1)).text('RM ' + element.unit_price);
+                    $('#unit_in_stock-' + (index+1)).text(element.unit_in_stock);
+                    $('#picture_url-' + (index+1)).attr('src', element.picture_url);
+                });
+            }
+        });
+
+        $.ajax({
+            data: "sql=SELECT * FROM Restaurant WHERE restaurant_id = " + getParameterByName("restaurant_id"),
+            url: 'http://54.179.179.164/webview.php',
+            method: 'GET', // or GET
+            dataType: 'json',
+            success: function (response) {
+                $.each(response, function(index, element) {
+                    $('#address').text(element.address);
+                    $('#contact').text(element.contact);
+                    $('#picking_hours').text(element.picking_hours);
+                    $('.store-title').text(element.restaurant_name);
+                    $('#logo_url').attr('src', element.logo_url);
+                });
+            }
+        });
+    })
+</script>
+
 </html>

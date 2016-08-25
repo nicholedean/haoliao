@@ -106,10 +106,11 @@
                     <div class="card-container">
                         <h4 id="restaurant-1"></h4>
                         <p>Collection time today: <div id="collection_time-1"></div></p>
+
                         <i class="fa fa-usd" aria-hidden="true" style="color: #FFFF00"></i>
                         <i class="fa fa-usd" aria-hidden="true" style="color: #FFFF00"></i>
                         <i class="fa fa-usd" aria-hidden="true" style="color: #FFFF00;margin-right: 10px;"></i>
-                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary"><div id="portion-1"></div></a>
+                        <a id="store-detail-1" class="btn btn-primary"><div id="portion-1"></div></a>
                     </div>
                 </div>
             </div>
@@ -119,11 +120,11 @@
                     <div class="card-container">
                         <h4 id="restaurant-2"></h4>
                         <p>Collection time today: <div id="collection_time-2"></div></p>
+
                         <i class="fa fa-usd" aria-hidden="true" style="color: #FFFF00"></i>
                         <i class="fa fa-usd" aria-hidden="true" style="color: #FFF9C4"></i>
                         <i class="fa fa-usd" aria-hidden="true" style="color: #FFF9C4;margin-right: 10px;"></i>
-                            
-                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary"><div id="portion-2"></div></a>
+                        <a id="store-detail-2" class="btn btn-primary"><div id="portion-2"></div></a>
                     </div>
                 </div>
             </div>
@@ -133,10 +134,11 @@
                     <div class="card-container">
                         <h4 id="restaurant-3"></h4>
                         <p>Collection time today: <div id="collection_time-3"></div></p>
+
                         <i class="fa fa-usd" aria-hidden="true" style="color: #FFFF00"></i>
                         <i class="fa fa-usd" aria-hidden="true" style="color: #FFFF00"></i>
                         <i class="fa fa-usd" aria-hidden="true" style="color: #FFF9C4;margin-right: 10px;"></i>
-                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary"><div id="portion-3"></div></a>
+                        <a id="store-detail-3" class="btn btn-primary"><div id="portion-3"></div></a>
                     </div>
                 </div>
             </div>
@@ -146,10 +148,11 @@
                     <div class="card-container">
                         <h4 id="restaurant-4"></h4>
                         <p>Collection time today: <div id="collection_time-4"></div></p>
+
                         <i class="fa fa-usd" aria-hidden="true" style="color: #FFFF00"></i>
                         <i class="fa fa-usd" aria-hidden="true" style="color: #FFF9C4"></i>
                         <i class="fa fa-usd" aria-hidden="true" style="color: #FFF9C4;margin-right: 10px;"></i>
-                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary"><div id="portion-4"></div></a>
+                        <a id="store-detail-4" class="btn btn-primary"><div id="portion-4"></div></a>
                     </div>
                 </div>
             </div>
@@ -159,10 +162,11 @@
                     <div class="card-container">
                         <h4 id="restaurant-5"></h4>
                         <p>Collection time today: <div id="collection_time-5"></div></p>
+
                         <i class="fa fa-usd" aria-hidden="true" style="color: #FFF9C4"></i>
                         <i class="fa fa-usd" aria-hidden="true" style="color: #FFF9C4"></i>
                         <i class="fa fa-usd" aria-hidden="true" style="color: #FFF9C4;margin-right: 10px;"></i>
-                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary"><div id="portion-5"></div></a>
+                        <a id="store-detail-5" class="btn btn-primary"><div id="portion-5"></div></a>
                     </div>
                 </div>
             </div>
@@ -172,10 +176,11 @@
                     <div class="card-container">
                         <h4 id="restaurant-6"></h4>
                         <p>Collection time today: <div id="collection_time-6"></div></p>
+
                         <i class="fa fa-usd" aria-hidden="true" style="color: #FFFF00"></i>
                         <i class="fa fa-usd" aria-hidden="true" style="color: #FFFF00"></i>
                         <i class="fa fa-usd" aria-hidden="true" style="color: #FFF9C4;margin-right: 10px;"></i>
-                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary"><div id="portion-6"></div></a>
+                        <a id="store-detail-6" class="btn btn-primary"><div id="portion-6"></div></a>
                     </div>
                 </div>
             </div>
@@ -185,10 +190,11 @@
                     <div class="card-container">
                         <h4 id="restaurant-7"></h4>
                         <p>Collection time today: <div id="collection_time-7"></div></p>
+
                         <i class="fa fa-usd" aria-hidden="true" style="color: #FFFF00"></i>
                         <i class="fa fa-usd" aria-hidden="true" style="color: #FFFF00"></i>
                         <i class="fa fa-usd" aria-hidden="true" style="color: #FFF9C4;margin-right: 10px;"></i>
-                        <a href="/haoliao/webview/store-detail.html" class="btn btn-primary"><div id="portion-7"></div></a>
+                        <a id="store-detail-7" class="btn btn-primary"><div id="portion-7"></div></a>
                     </div>
                 </div>
             </div>
@@ -242,7 +248,7 @@
 <script>
     $(document).ready(function() {
         $.ajax({
-            data: "sql=SELECT restaurant_name, picture, picking_hours, sum_of_portions FROM Restaurant r INNER JOIN Meal m ON m.restaurant_id = r.restaurant_id INNER JOIN (SELECT restaurant_id, sum(`unit_in_stock`) as sum_of_portions FROM Meal GROUP BY restaurant_id) as b ON b.restaurant_id = r.restaurant_id WHERE m.unit_in_stock > 0 GROUP BY r.restaurant_id",
+            data: "sql=SELECT r.restaurant_id, restaurant_name, picture, picking_hours, sum_of_portions FROM Restaurant r INNER JOIN Meal m ON m.restaurant_id = r.restaurant_id INNER JOIN (SELECT restaurant_id, sum(`unit_in_stock`) as sum_of_portions FROM Meal GROUP BY restaurant_id) as b ON b.restaurant_id = r.restaurant_id WHERE m.unit_in_stock > 0 GROUP BY r.restaurant_id",
             url: 'http://54.179.179.164/webview.php',
             method: 'GET', // or GET
             dataType: 'json',
@@ -252,6 +258,7 @@
                     $('#restaurant-' + (index+1)).text(element.restaurant_name);
                     $('#collection_time-' + (index+1)).text(element.picking_hours);
                     $('#portion-' + (index+1)).text('Quantities left: ' + element.sum_of_portions);
+                    $('#store-detail-' + (index+1)).attr('href', '/haoliao/webview/store-detail.html?restaurant_id=' + element.restaurant_id);
                 });
             }
         });
