@@ -89,7 +89,7 @@
                     <div class="col-sm-3"><input type="text" value="163546354" class="form-control"></div>
                 </div>
                 <div class="row text-center">
-                    <a href="/haoliao/webview/store-payment-detail.html" class="btn btn-primary" style="margin-top: 20px">Continue</a>
+                    <a onclick="goPage('/haoliao/webview/store-payment-detail.html')" class="btn btn-primary" style="margin-top: 20px">Continue</a>
                 </div>
 
             </div>
@@ -116,5 +116,24 @@
         webViewBase: location.origin + location.pathname + 'templates/'
     };
     console.log(defaultParam);
+</script>
+
+<script>
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    function goPage(url) {
+        console.log(url);
+        url += '?param=' + getParameterByName("param");
+
+        window.location = url;
+    }
 </script>
 </html>

@@ -136,7 +136,7 @@
                     </div>
                 </form>
                 <div class="row text-center">
-                    <a id="send_email" href="/haoliao/webview/store-detail-success.html" class="btn btn-primary" style="margin-top: 20px">Place Order</a>
+                    <a id="send_email" class="btn btn-primary" style="margin-top: 20px">Place Order</a>
                 </div>
 
             </div>
@@ -168,18 +168,52 @@
 <!-- Call haoliao API to insert order to database and trigger email notification API -->
 <script>
 
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
     $("#send_email").click(function(){
+
+        var tmp = getParameterByName("param").split(",");
+        console.log(tmp);
+
+        for (var i = 0; i < tmp.length - 1; i++) {
+
+            var tmp2 = tmp[i].split(":");
+            var id = tmp2[0];
+            var quantity = tmp2[1];
+
+            $.ajax({
+                data: "sql=UPDATE Meal SET unit_in_stock = unit_in_stock - " + quantity + " WHERE meal_id = " + id,
+                url: 'http://54.179.179.164/webview.php',
+                method: 'GET', // or GET
+                dataType: 'json',
+                success: function (response) {
+
+                }
+            });
+        }
+
         var hookData = {
             "name": "ordercomplete",
             "consumer_email": "yimkh@seekasia.com"
-        }
+        };
 
         $.ajax({
             type: "POST",
             url: "https://haoliao.stamplayapp.com/api/webhook/v1/ordercomplete/catch",
             data: hookData
-        })
+        });
+
+        setTimeout(function(){ window.location = "/haoliao/webview/store-detail-success.html"; }, 4000);
 
     });
+
 </script>
 </html>
