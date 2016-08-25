@@ -1,6 +1,14 @@
 /* Empty. Add your own CSS if you like */
-   body {
+
+    html {
+        position: relative;
+        min-height: 100%;
+    }
+
+    body {
         background-color: #f5f5f5;
+        padding-top: 70px;
+        padding-bottom: 60px;
     }
     .navbar-inverse {
         background-color: #333333;
@@ -19,6 +27,7 @@
     .menu-bar {
         background-color: #fff;
         margin-top: -17px;
+        margin-bottom: 20px;
         padding: 25px;
         font-size: 18px;
     }
@@ -27,6 +36,8 @@
     }
     .menu-bar .active > a{
         color: #6c9d43;
+        border-bottom: 2px solid #558b2f;
+        padding-bottom: 3px;
     }
     .menu-bar a:hover{
         text-decoration: none;
@@ -36,6 +47,12 @@
     }
     .menu-bar li {
         padding: 0 30px;
+    }
+    @media (max-width: 767px) {
+        .menu-bar li {
+            display: block;
+            margin-bottom: 5px;
+        }
     }
     .search-filter {
         margin-bottom: 30px;
@@ -76,7 +93,37 @@
     footer {
         background-color: #558b2f;
         color: #fff;
+        position: absolute;
+          bottom: 0;
+          width: 100%;
+          clear: both;
+          height:auto;
     }
     footer .container {
          padding: 15px 5px;
     }
+
+    .container .container {
+        padding: 0 80px 20px 15px;
+    }
+
+    /*Store detail*/
+    .store-title {
+        margin: 50px 5px 0px 30px;
+        font-weight: bold;
+    }
+
+    .desc-title {
+        margin: 10px 0;
+    }
+
+    .desc-title .desc{
+        margin-left: 15px;
+    }
+
+    .sub-info {
+        color: #999;
+        font-size: 12px;
+        margin-left: 20px;
+    }
+

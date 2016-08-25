@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title>Fed Up | Store detail</title>
+    <title>Fed Up | Collection</title>
     <base href="/hackathon/hackathon/www/">
     <link href="webview/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="webview/font-awesome/css/font-awesome.min.css">
@@ -78,76 +78,26 @@
 
             <div class="container">
 
-                <div class="row">
-                    <div class="col-sm-2"><img src="webview/img/store/br-logo.png" alt="BR logo" width="200" class=></div>
-                    <div class="col-sm-6"><h2 class="store-title">Baskit Robbin's <button class="btn btn-default"><i class="fa fa-star" aria-hidden="true"></i></button></h2></div>
-                </div>
+                <h3>Collection options</h3>
 
                 <hr>
 
-                <div class="desc-title"><strong>Collection time today:</strong><br>
-                <span>8pm to 9pm</span>
-                </div>
-                <div class="desc-title"><strong>Description</strong>
-                    <div class="desc">
-                        <div><strong>Addres:</strong></div>
-                        <span>Lot G-03, Ground Floor, Menara The Weld, No 76, Jalan Raja Chulan, 50200 Kuala Lumpur, Malaysia </span><br>
-                        <a href="#">Link to Google Map</a>
-                        <div><strong>Phone:</strong></div>
-                        <span>60 3-2162 6880</span>
-                        <div><strong>Your Price</strong></div>
-                        <span>MYR 1 - MYR 10</span>
+                <div class="desc-title"><strong>Select your collection options (24 hours store only available after 10pm)</strong><br>
+                    <div class="radio">
+                      <label><input type="radio" name="optradio">Pickup at restaurant</label>
+                    </div>
+                    <div class="radio">
+                      <label><input type="radio" name="optradio" disabled>Pickup at nearest 24 hours store</label>
+                      <div class="sub-info">7-11, KK Market, LRT and etc.</div>
+                    </div>
+                    <div class="radio">
+                      <label><input type="radio" name="optradio">Delivery - Uber/ Grabcar</label>
+                      <div class="sub-info">Delivery charge based on km/h</div>
                     </div>
                 </div>
-
-                <div class="desc-title"><strong>Top 3 categories:</strong><br>
-                    <div class="row">
-                        <div class="col-sm-3 text-right">Main Course</div>
-                        <div class="col-sm-2">
-                            <select class="form-control">
-                                <option value="0">none</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3 text-right">Desserts</div>
-                        <div class="col-sm-2">
-                            <select class="form-control">
-                                <option value="0">none</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3 text-right">Noodle</div>
-                        <div class="col-sm-2">
-                            <select class="form-control">
-                                <option value="0">none</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="3">4</option>
-                            </select>
-                        </div>
-                    </div>
-                     <div class="row">
-                        <div class="col-sm-3 text-right">Others</div>
-                        <div class="col-sm-2">
-                            <select class="form-control">
-                                <option value="0">none</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+            
                 <div class="row text-center">
-                    <a href="#" class="btn btn-primary text-center">Proceed</a>
+                    <a href="#" class="btn btn-primary text-center">Place Order</a>
                 </div>
             </div>
         </div>

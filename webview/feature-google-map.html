@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Fed Up | Map</title>
+    <base href="/hackathon/hackathon/www/">
+    <link href="webview/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="webview/font-awesome/css/font-awesome.min.css">
+    <!-- <link href="lib/ionic/css/ionic.css" rel="stylesheet"> -->
+    <link href="webview/css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="lib/ionic/js/jquery.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/directive.js"></script>
+    <script src="js/service.js"></script>
+
+    <!-- My js -->
+    <script src="webview/js/style.js"></script>
+</head>
+
+<body ng-app="starter">
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="webview/img/fedup-logo.png" alt="FedUp logo" width="115"></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">Profile</a>
+                    </li>
+                    <li>
+                        <a href="#">Log out</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+  <div class="menu-bar text-center">
+        <ul class="list-inline">
+            <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i> Search for restaurant</a></li>
+            <li class="active"><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Map</a></li>
+            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i> My favourite</a></li>
+            <li><a href="#"><i class="fa fa-history" aria-hidden="true"></i> History</a></li>
+        </ul>
+    </div>
+
+    <!-- Page Content -->
+    <div class="container" ng-controller="FoodCtrl">
+
+        <div class="panel panel-basic">
+            <div class="panel-body">
+
+            <div class="container">
+
+                <h3>Search by Map</h3>
+
+                <hr>
+
+                <div class="my-map text-center">
+                    <img src="webview/img/googlemap.jpg" alt="Google Map">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-12">
+                    <p>Copyright (c) 2016 SEEK ASIA HACKATON.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+<script>
+    console.log(location.origin + location.pathname);
+    var defaultParam = {
+        webViewBase: location.origin + location.pathname + 'templates/'
+    };
+    console.log(defaultParam);
+</script>
+</html>
