@@ -99,105 +99,8 @@
             </div>
         </div>
 
-        <div class="row card-parent">
-            <div class="col-md-3">
-                <div class="card">
-                    <img id="image-1">
-                    <div class="card-container">
-                        <h4 id="restaurant-1"></h4>
-                        <p>Collection time today: <div id="collection_time-1"></div></p>
-
-                        <i class="fa fa-usd" aria-hidden="true" style="color: #FFFF00"></i>
-                        <i class="fa fa-usd" aria-hidden="true" style="color: #FFFF00"></i>
-                        <i class="fa fa-usd" aria-hidden="true" style="color: #FFFF00;margin-right: 10px;"></i>
-                        <a id="store-detail-1" class="btn btn-primary"><div id="portion-1"></div></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <img id="image-2">
-                    <div class="card-container">
-                        <h4 id="restaurant-2"></h4>
-                        <p>Collection time today: <div id="collection_time-2"></div></p>
-
-                        <i class="fa fa-usd" aria-hidden="true" style="color: #FFFF00"></i>
-                        <i class="fa fa-usd" aria-hidden="true" style="color: #FFF9C4"></i>
-                        <i class="fa fa-usd" aria-hidden="true" style="color: #FFF9C4;margin-right: 10px;"></i>
-                        <a id="store-detail-2" class="btn btn-primary"><div id="portion-2"></div></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <img id="image-3">
-                    <div class="card-container">
-                        <h4 id="restaurant-3"></h4>
-                        <p>Collection time today: <div id="collection_time-3"></div></p>
-
-                        <i class="fa fa-usd" aria-hidden="true" style="color: #FFFF00"></i>
-                        <i class="fa fa-usd" aria-hidden="true" style="color: #FFFF00"></i>
-                        <i class="fa fa-usd" aria-hidden="true" style="color: #FFF9C4;margin-right: 10px;"></i>
-                        <a id="store-detail-3" class="btn btn-primary"><div id="portion-3"></div></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <img id="image-4">
-                    <div class="card-container">
-                        <h4 id="restaurant-4"></h4>
-                        <p>Collection time today: <div id="collection_time-4"></div></p>
-
-                        <i class="fa fa-usd" aria-hidden="true" style="color: #FFFF00"></i>
-                        <i class="fa fa-usd" aria-hidden="true" style="color: #FFF9C4"></i>
-                        <i class="fa fa-usd" aria-hidden="true" style="color: #FFF9C4;margin-right: 10px;"></i>
-                        <a id="store-detail-4" class="btn btn-primary"><div id="portion-4"></div></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <img id="image-5">
-                    <div class="card-container">
-                        <h4 id="restaurant-5"></h4>
-                        <p>Collection time today: <div id="collection_time-5"></div></p>
-
-                        <i class="fa fa-usd" aria-hidden="true" style="color: #FFF9C4"></i>
-                        <i class="fa fa-usd" aria-hidden="true" style="color: #FFF9C4"></i>
-                        <i class="fa fa-usd" aria-hidden="true" style="color: #FFF9C4;margin-right: 10px;"></i>
-                        <a id="store-detail-5" class="btn btn-primary"><div id="portion-5"></div></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <img id="image-6">
-                    <div class="card-container">
-                        <h4 id="restaurant-6"></h4>
-                        <p>Collection time today: <div id="collection_time-6"></div></p>
-
-                        <i class="fa fa-usd" aria-hidden="true" style="color: #FFFF00"></i>
-                        <i class="fa fa-usd" aria-hidden="true" style="color: #FFFF00"></i>
-                        <i class="fa fa-usd" aria-hidden="true" style="color: #FFF9C4;margin-right: 10px;"></i>
-                        <a id="store-detail-6" class="btn btn-primary"><div id="portion-6"></div></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <img id="image-7">
-                    <div class="card-container">
-                        <h4 id="restaurant-7"></h4>
-                        <p>Collection time today: <div id="collection_time-7"></div></p>
-
-                        <i class="fa fa-usd" aria-hidden="true" style="color: #FFFF00"></i>
-                        <i class="fa fa-usd" aria-hidden="true" style="color: #FFFF00"></i>
-                        <i class="fa fa-usd" aria-hidden="true" style="color: #FFF9C4;margin-right: 10px;"></i>
-                        <a id="store-detail-7" class="btn btn-primary"><div id="portion-7"></div></a>
-                    </div>
-                </div>
-            </div>
+        <div id="result" class="row card-parent">
+            <!-- Append result from haoliao API dynamically -->
         </div>
 
         <!-- Pagination -->
@@ -254,6 +157,18 @@
             dataType: 'json',
             success: function (response) {
                 $.each(response, function(index, element) {
+                    document.getElementById("result").innerHTML += "<div class='col-md-3'> <div class='card'> <img id='image-"
+                            + (index+1)
+                            + "'> <div class='card-container'> <h4 id='restaurant-"
+                            + (index+1)
+                            + "'></h4> <p>Collection time today: <div id='collection_time-"
+                            + (index+1)
+                            + "'></div></p> <i class='fa fa-usd' aria-hidden='true' style='color: #FFFF00'></i> <i class='fa fa-usd' aria-hidden='true' style='color: #FFFF00'></i> <i class='fa fa-usd' aria-hidden='true' style='color: #FFFF00;margin-right: 10px;'></i> <a id='store-detail-"
+                            + (index+1)
+                            + "' class='btn btn-primary'><div id='portion-"
+                            + (index+1)
+                            + "'></div></a> </div> </div> </div>";
+
                     $('#image-' + (index+1)).attr('src', element.picture);
                     $('#restaurant-' + (index+1)).text(element.restaurant_name);
                     $('#collection_time-' + (index+1)).text(element.picking_hours);
