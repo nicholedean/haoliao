@@ -83,7 +83,7 @@
 
                 <div class="row">
                     <div class="col-sm-2"><img id="logo_url" width="200" class=></div>
-                    <div class="col-sm-10"><h2 class="store-title"><button id="star" class="btn btn-default"><i class="fa fa-star" aria-hidden="true"></i></button></h2></div>
+                    <div class="col-sm-10"><h2 class="store-title"><span id="store-title-main"></span><button id="star" class="btn btn-default" style="margin-left:10px;"><i class="fa fa-star" aria-hidden="true"></i></button></h2></div>
                 </div>
 
                 <hr>
@@ -149,16 +149,6 @@
         webViewBase: location.origin + location.pathname + 'templates/'
     };
     console.log(defaultParam);
-    $(function(){ 
-        $('#star').click(function(){
-            
-            if($('#star').hasClass('starred')) {
-                $(this).removeClass('starred');
-            }else {
-                $(this).addClass('starred');
-            }
-        });
-    });
 </script>
 
 <!-- Call haoliao API -->
@@ -174,6 +164,16 @@
     }
 
     $(document).ready(function() {
+
+        $('#star').click(function(){
+            
+            if($('#star').hasClass('starred')) {
+                $(this).removeClass('starred');
+            }else {
+                $(this).addClass('starred');
+            }
+        });
+
         $.ajax({
             data: "sql=SELECT meal_id, meal_name, description, unit_price, picture_url, unit_in_stock, original_price FROM Meal WHERE restaurant_id = " + getParameterByName("restaurant_id"),
             url: 'http://54.179.179.164/webview.php',
@@ -212,11 +212,14 @@
                     $('#address').text(element.address);
                     $('#contact').text(element.contact);
                     $('#picking_hours').text(element.picking_hours);
-                    $('.store-title').text(element.restaurant_name);
+                    $('#store-title-main').text(element.restaurant_name);
                     $('#logo_url').attr('src', element.logo_url);
                 });
             }
         });
+
+        
+
     })
 </script>
 
