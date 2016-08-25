@@ -80,7 +80,7 @@
 
                 <div class="row">
                     <div class="col-sm-2"><img src="webview/img/store/br-logo.png" alt="BR logo" width="200" class=></div>
-                    <div class="col-sm-6"><h2 class="store-title">Baskit Robbin's <button class="btn btn-default"><i class="fa fa-star" aria-hidden="true"></i></button></h2></div>
+                    <div class="col-sm-10"><h2 class="store-title">Baskit Robbin's <button id="star" class="btn btn-default"><i class="fa fa-star" aria-hidden="true"></i></button></h2></div>
                 </div>
 
                 <hr>
@@ -100,52 +100,59 @@
                     </div>
                 </div>
 
-                <div class="desc-title"><strong>Top 3 categories:</strong><br>
-                    <div class="row">
-                        <div class="col-sm-3 text-right">Main Course</div>
-                        <div class="col-sm-2">
-                            <select class="form-control">
-                                <option value="0">none</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3 text-right">Desserts</div>
-                        <div class="col-sm-2">
-                            <select class="form-control">
-                                <option value="0">none</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3 text-right">Noodle</div>
-                        <div class="col-sm-2">
-                            <select class="form-control">
-                                <option value="0">none</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="3">4</option>
-                            </select>
-                        </div>
-                    </div>
-                     <div class="row">
-                        <div class="col-sm-3 text-right">Others</div>
-                        <div class="col-sm-2">
-                            <select class="form-control">
-                                <option value="0">none</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
-                        </div>
+                <div class="desc-title"><strong>Top 3 foods:</strong><br>
+                <div class="table-responsive">
+                   <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Original Price</th>
+                                <th>Discount Price</th>
+                                <th>Quantity</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="http://4.bp.blogspot.com/-Ni78iq5xpKc/TfzQP7UgD-I/AAAAAAAAAp4/38H7MZnHCWo/s1600/SDC12825.JPG" alt="Cheese Tart" class="img-circle" style="width: 100px;"></td>
+                                <td>Cheese Tart</td>
+                                <td><span style="text-decoration: line-through">RM 5</span></td>
+                                <td>RM 2</td>
+                                <td>3</td>
+                                 <th><input type="text" value="0" style="width:60px"></th>
+                            </tr>
+                            <tr>
+                                <td><img src="http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/9/2/0/garlmash_190.jpg.rend.sni12col.landscape.jpeg" alt="Mash Potato" class="img-circle" style="width: 100px;"></td>
+                                <td>Mash Potato (large)</td>
+                                <td><span style="text-decoration: line-through">RM 6</span></td>
+                                <td>RM 3</td>
+                                <td>2</td>
+                                 <th><input type="text" value="0" style="width:60px"></th>
+                            </tr>
+                            <tr>
+                                <td><img src="http://www.azumafoods.com/products/product_images/Reito_Tamago_Yaki_3_13_109_1.jpg" alt="Sushi" class="img-circle" style="width: 100px;"></td>
+                                <td>Sushi Tamago</td>
+                                <td><span style="text-decoration: line-through">RM 4</span></td>
+                                <td>RM 2</td>
+                                <td>1</td>
+                                <th><input type="text" value="0" style="width:60px"></th>
+                            </tr>
+                            <tr>
+                                <td><img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/GHS-pictogram-unknown.svg" alt="Other" class="img-circle" style="width: 100px;"></td>
+                                <td>Others</td>
+                                <td><span style="text-decoration: line-through">RM 8 - 13</span></td>
+                                <td>RM 2 - 5</td>
+                                <td>5</td>
+                                <th><input type="text" value="0" style="width:60px"></th>
+                            </tr>
+
+                            
+                        </tbody>
+                    </table>
                     </div>
                 </div>
+
                 <div class="row text-center">
                     <a href="/haoliao/webview/store-detail-collect.html" class="btn btn-primary text-center">Proceed</a>
                 </div>
@@ -168,10 +175,21 @@
 
 </body>
 <script>
+
     console.log(location.origin + location.pathname);
     var defaultParam = {
         webViewBase: location.origin + location.pathname + 'templates/'
     };
     console.log(defaultParam);
+    $(function(){ 
+        $('#star').click(function(){
+            
+            if($('#star').hasClass('starred')) {
+                $(this).removeClass('starred');
+            }else {
+                $(this).addClass('starred');
+            }
+        });
+    });
 </script>
 </html>
