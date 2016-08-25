@@ -88,7 +88,7 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Name</label>
                       <div class="col-sm-5">
-                        <input type="text" class="form-control" placeholder="name" value="Nik Yam">
+                        <input type="text" class="form-control" placeholder="name" value="Nik Yim">
                       </div>
                     </div>
                      <div class="form-group">
@@ -136,7 +136,7 @@
                     </div>
                 </form>
                 <div class="row text-center">
-                    <a href="/haoliao/webview/store-detail-success.html" class="btn btn-primary" style="margin-top: 20px">Place Order</a>
+                    <a id="send_email" href="/haoliao/webview/store-detail-success.html" class="btn btn-primary" style="margin-top: 20px">Place Order</a>
                 </div>
 
             </div>
@@ -163,5 +163,23 @@
         webViewBase: location.origin + location.pathname + 'templates/'
     };
     console.log(defaultParam);
+</script>
+
+<!-- Call haoliao API to insert order to database and trigger email notification API -->
+<script>
+
+    $("#send_email").click(function(){
+        var hookData = {
+            "name": "ordercomplete",
+            "consumer_email": "yimkh@seekasia.com"
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "https://haoliao.stamplayapp.com/api/webhook/v1/ordercomplete/catch",
+            data: hookData
+        })
+
+    });
 </script>
 </html>
