@@ -41,19 +41,11 @@ var app = angular.module('starter.controllers', []);
     })
 
     .controller('FoodCtrl', function ($scope, $stateParams, $http, $templateCache, apiService) {
-        apiService.call('url', {sql: 'select * from users'}).
+        apiService.call('select * from users').
         then(function(response) {
             $scope.playlists = response;
         }, function(response) {
             console.log(response);
         });
 
-        $scope.playlists = [
-            {title: 'Reggae', id: 1},
-            {title: 'Chill', id: 2},
-            {title: 'Dubstep', id: 3},
-            {title: 'Indie', id: 4},
-            {title: 'Rap', id: 5},
-            {title: 'Cowbell', id: 6}
-        ];
     });
